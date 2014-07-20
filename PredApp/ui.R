@@ -12,6 +12,7 @@ shinyUI(fixedPage(theme = "bootstrap.css",
     ),
     
     titlePanel(strong(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA"))),
+    p(em("This application predicts the duration of an eruption as a function of the waiting time to the next eruption. The waiting times must be between 43 mins and 96 mins to avoid extrapolation.")),
     sidebarLayout(
         sidebarPanel(
             h4("Waiting time to next eruption"),
