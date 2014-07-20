@@ -1,6 +1,6 @@
 library(shiny)
 
-shinyUI(fixedPage(
+shinyUI(fixedPage(theme = "bootstrap.css",
     
     tags$head(
         tags$style(HTML("
@@ -11,11 +11,12 @@ shinyUI(fixedPage(
     "))
     ),
     
-    titlePanel(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA")),
+    titlePanel(strong(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA"))),
     sidebarLayout(
         sidebarPanel(
             h4("Waiting time to next eruption"),
             numericInput("in_wait_time", "Enter the desired waiting time (in mins)", 70, min = 43, max = 96, step = 1),
+            p(),
             submitButton("Submit")
             ),
         mainPanel(

@@ -26,6 +26,7 @@ shinyServer(
         pred <- reactive({predict(model, data.frame(waiting = wait()))[[1]]})
         output$prediction <- renderPrint({pred()})
         output$reg_plot <- renderPlot({
+            par(mar = c(5.1, 4.1, 0, 2.1))
             plot(eruptions ~ waiting, data = faithful, xlab = "Winting time to next eruption (in mins)", ylab = "Eruption duration (in mins)")
             abline(model, col = "blue")
             points(wait(), pred(), col = "red", pch = 19)
