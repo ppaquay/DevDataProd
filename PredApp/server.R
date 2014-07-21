@@ -18,10 +18,15 @@ shinyServer(
         output$reg_plot <- renderPlot({
             par(mar = c(5.1, 4.1, 0, 2.1))
             plot(eruptions ~ waiting, data = faithful, xlab = "Winting time to next eruption (in mins)", ylab = "Eruption duration (in mins)")
-            abline(model, col = "blue")
             points(wait(), pred(), col = "red", pch = 19)
             segments(wait(), 0, wait(), pred(), col = "red", lty = 2)
             segments(0, pred(), wait(), pred(), col = "red", lty = 2)
+            if (input$smooth == "W") {
+                abline(model, col = "blue")
+            }
+            if (input$smooth == "Wo") {
+                
+            }
         })
     }
 )

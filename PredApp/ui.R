@@ -17,6 +17,8 @@ shinyUI(fixedPage(theme = "bootstrap.css",
         sidebarPanel(
             h4("Waiting time to next eruption"),
             numericInput("in_wait_time", "Enter the desired waiting time (in mins)", 70, min = 43, max = 96, step = 1),
+            h4("With or without regression line ?"),
+            selectInput("smooth", "Do you want to draw the plot with or without the regression line ?", list("With" = "W", "Without" = "Wo")),
             p(),
             submitButton("Submit")
             ),
@@ -26,7 +28,7 @@ shinyUI(fixedPage(theme = "bootstrap.css",
             h4("Prediction of eruption duration (in mins) :"),
             verbatimTextOutput("prediction"),
             h4("Plot of eruption duration vs waiting time to next eruption :"),
-            plotOutput("reg_plot")
+            conditionalPanel(condition = "InputId == 'smooth'", plotOutput("reg_plot"))
             )
         )
     )
