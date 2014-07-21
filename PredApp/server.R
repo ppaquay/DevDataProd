@@ -21,12 +21,12 @@ shinyServer(
             points(wait(), pred(), col = "red", pch = 19)
             segments(wait(), 0, wait(), pred(), col = "red", lty = 2)
             segments(0, pred(), wait(), pred(), col = "red", lty = 2)
+            text(40, pred(), round(pred(), digits = 2), adj = c(-0.5,-0.5), col = "red")
+            text(wait(), 1.5, round(wait(), digits = 2), adj = c(-0.5, 0), col = "red")
             if (input$smooth == "W") {
                 abline(model, col = "blue")
             }
-            if (input$smooth == "Wo") {
-                
-            }
+            if (input$smooth == "Wo") {}
         })
     }
 )
