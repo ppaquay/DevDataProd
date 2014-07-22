@@ -7,8 +7,6 @@ model <- lm(eruptions ~ waiting, data = faithful)
 shinyServer(
     function(input, output) {
         output$out_wait_time <- renderPrint({input$in_wait_time})   
-        #output$prediction <- renderPrint({predict(model, data.frame(waiting = input$in_wait_time))[[1]]})
-        #wait <- reactive({input$in_wait_time})
         wait <- reactive({
             validate(
                 need((input$in_wait_time <= 96) & (input$in_wait_time >= 43), "Entered waiting time off limits !")

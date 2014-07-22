@@ -1,10 +1,9 @@
 library(shiny)
 
 #shinyUI(fixedPage(theme = "bootstrap.css",
-shinyUI(navbarPage(em("Duration of Old Faithful geyser eruption"),
+shinyUI(navbarPage(fluid = FALSE, em("Duration of Old Faithful geyser eruption"),
     tabPanel("Application",
         titlePanel(strong(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA"))),
-        #p(em("This application predicts the duration of an eruption as a linear function of the waiting time to the next eruption. The waiting times must be between 43 mins and 96 mins to avoid extrapolation. You may draw the plot of eruption duration vs. waiting time to next eruption with or without regression line.")),
         sidebarLayout(
             sidebarPanel(
                 h4("Waiting time to next eruption"),
@@ -25,6 +24,7 @@ shinyUI(navbarPage(em("Duration of Old Faithful geyser eruption"),
             )
         ),
     tabPanel("Documentation",
+            titlePanel(strong(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA"))),
             h4("Synopsis"),
             p("This application predicts the duration of an eruption as a linear function of the waiting time to the next eruption. The linear function is simply the regression line of the duration of the eruption vs the waiting time to the next eruption."),
             h4("How it works"),
