@@ -1,0 +1,62 @@
+---
+title       : Prediction of Old Faithful geyser eruption duration 
+subtitle    : Yellowstone National Park, Wyoming, USA
+author      : Pierre Paquay
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Presentation
+
+* This shiny application predicts the duration of an eruption of Old Faithful geyser (Yellowstone National Park, Wyoming, USA) as a linear function of the waiting time to the next eruption.
+
+* This application uses linear regression and builds a model based on the "faithful" dataset. This regression model is then used to predict eruption duration based on the waiting time (in minutes) entered by the user.
+
+* The predicted eruption duration is displayed in minutes.
+
+---
+
+## About the data
+
+The dataset used for this application is the "faithful" dataset from the "datasets" package.
+
+```{r}
+library(datasets)
+head(faithful)
+```
+
+This dataset consists of `r nrow(faithful)` observations of `r ncol(faithful)` variables : "eruptions" and "waiting" which are the times in minutes of the eruption duration and the waiting time to the next eruption respectively.
+
+---
+
+## About the model
+
+We use the "lm" function to build the regression model.
+
+```{r}
+model <- lm(eruptions ~ waiting, data = faithful)
+summary(model)$coef
+```
+
+The model obtained is the following.
+
+$$\widehat{\mathtt{eruptions}} = 0.07563\times\mathtt{waiting} - 1.87402$$
+
+By examining the $R^2$ value, we may see that more than `r round(summary(model)$adj.r.squared * 100)`% of the variation is explained by the model. This comforts us in the choice of this model.
+
+---
+
+## Eruption duration prediction
+
+Finally the regression model is used to predict the eruption duration based on the waiting time entered by the user. As an example, you'll find below the prediction of the eruption duration after a waiting time of 70 minutes.
+
+```{r}
+predict(model, data.frame(waiting = 70))[[1]]
+```
+
+So we may conclude that the predicted eruption duration based on a waiting time of 70 minutes is about `r round(predict(model, data.frame(waiting = 70))[[1]], 2)` minutes.
