@@ -2,6 +2,7 @@ library(shiny)
 
 library(datasets)
 
+data(faithful)
 model <- lm(eruptions ~ waiting, data = faithful)
 
 shinyServer(

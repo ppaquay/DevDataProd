@@ -1,15 +1,12 @@
 library(shiny)
 
-#shinyUI(fixedPage(theme = "bootstrap.css",
 shinyUI(navbarPage(fluid = FALSE, em("Duration of Old Faithful geyser eruption"),
     tabPanel("Application",
-        titlePanel(strong(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA"))),
+        titlePanel(title = strong(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA")), windowTitle = "Prediction of eruption of Old Faithful geyser"),
         sidebarLayout(
             sidebarPanel(
                 h4("Waiting time to next eruption"),
                 numericInput("in_wait_time", "Enter the desired waiting time (in mins)", 70, min = 43, max = 96, step = 1),
-                #h4("With or without regression line ?"),
-                #selectInput("smooth", "Do you want to draw the plot with or without the regression line ?", list("With" = "W", "Without" = "Wo")),
                 p(),
                 submitButton("Submit")
                 ),
@@ -24,7 +21,7 @@ shinyUI(navbarPage(fluid = FALSE, em("Duration of Old Faithful geyser eruption")
             )
         ),
     tabPanel("Documentation",
-            titlePanel(strong(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA"))),
+            titlePanel(title = strong(em("Prediction of the duration of the eruption of Old Faithful geyser in Yellowstone National Park, Wyoming, USA")), windowTitle = "Prediction of eruption of Old Faithful geyser"),
             h4("Synopsis"),
             p("This application predicts the duration of an eruption as a linear function of the waiting time to the next eruption. The linear function is simply the regression line of the duration of the eruption vs the waiting time to the next eruption."),
             h4("How it works"),
